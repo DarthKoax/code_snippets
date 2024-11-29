@@ -1,4 +1,4 @@
-# async-await-fetch
+# Promise resolution fetch
 Basic javascript snippet on how to use fetch promises.
 ```javascript
 <script>
