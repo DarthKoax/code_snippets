@@ -10,12 +10,6 @@ async function main() {
    console.log('before')
    console.log(foo_response)
    console.log('after')
-
-   if (foo_response && foo_response.message) {
-         document.getElementById('app').textContent = foo_response.message;
-   } else {
-         document.getElementById('app').textContent = 'No message received';
-   }
 }
 
 async function foo() {

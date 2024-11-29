@@ -1,39 +1,35 @@
 # async-await-fetch
-Basic javascript snippet on how to use fetch with async/await. Add main logic path into main function to code synchronously or rename and only add dependent code into 'main', all other code can be placed at the top level if it is not dependent upon foo();
+Basic javascript snippet on how to use fetch promises.
 ```javascript
 <script>
 main();
 console.log("This will print before foo() because it is asynchoronous, or not dependant")
 
-async function main() {
-   const foo_response = await foo();
-   console.log('before')
-   console.log(foo_response)
-   console.log('after')
-
-   if (foo_response && foo_response.message) {
-         document.getElementById('app').textContent = foo_response.message;
-   } else {
-         document.getElementById('app').textContent = 'No message received';
-   }
+function main() {
+   console.log('before');
+   foo().then(foo_response => {
+         console.log(foo_response);
+      }).catch(error => {
+         console.error('Error in main:', error);
+         document.getElementById('app').textContent = 'An error occurred';
+      });
+   console.log('after');
 }
 
-async function foo() {
-   try {
-      let response = await fetch("http://localhost:5000/");
-      if (response.ok) {
-         // let result = await response.text()
-         let result = await response.json()
-         return result;
-      } else {
-         throw new Error(`HTTP error! status: ${response.status}`);
-      }
-   } catch (error) {
-      console.error("Error:", error);
-   }
+function foo() {
+   return fetch("http://localhost:5000/")
+      .then(response => {
+         if (response.ok) {
+            return response.json();
+         } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+         }
+      })
+      .catch(error => {
+         console.error("Error in foo:", error);
+         throw error; // Propagate the error to be handled by the caller
+      });
 }
-
-
 </script>
 
 ```
