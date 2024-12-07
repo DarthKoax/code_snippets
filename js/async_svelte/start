@@ -1,0 +1,1 @@
+docker run --network app --rm --name svelte_test -it -p 5173:5173 -v ./app:/app -w /app/  node:lts-alpine3.20 npm run dev -- --host

@@ -17,7 +17,8 @@ async function main() {
 async function foo() {
    try {
       // This must be resolvable client side. 
-      let response = await fetch("http://localhost:5000/");
+      let response = await fetch("http://192.168.1.101:7417/", {mode: 'no-cors'});
+      console.log(response.ok)
       if (response.ok) {
          // let result = await response.text()
          let result = await response.json()
