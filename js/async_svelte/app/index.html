@@ -7,6 +7,13 @@
     <title>Vite + Svelte</title>
   </head>
   <body>
+    <script>
+      window.SVELTE_PROPS = {
+        apiKey: "abc123",
+        initialCount: 42,
+        url: 'http://127.0.0.1:8041/'
+      };
+    </script>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

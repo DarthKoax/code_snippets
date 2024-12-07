@@ -1,9 +1,11 @@
 <script>
      import { onMount } from 'svelte';
+     export let title
+     export let userData
   // import Counter from './lib/Counter.svelte'
   let name = 'Bob'  
   let bob;
-
+   console.log(userData)
   onMount(async () => {
       // Set initial bob   
       bob = await fetchData();
@@ -20,7 +22,7 @@
   async function fetchData() {
     try {
         console.log("resp")
-        let response = await fetch("http://127.0.0.1:8041/");
+        let response = await fetch(userData.url);
         if (response.ok) {
            console.log("Response: ", response.ok)
             // let result = await response.
