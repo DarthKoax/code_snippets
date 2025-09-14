@@ -1,0 +1,9 @@
+services:
+  php-debugger:
+    container_name: php_debug
+    build: .
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app:/var/www/html/app
+    working_dir: /var/www/html      
