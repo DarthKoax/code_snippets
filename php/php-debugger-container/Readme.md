@@ -14,3 +14,12 @@ How to use:
 Debug logs: 
  * VSCode Debug console.
  * Run `make tail_debug` 
+
+
+ Key Values:
+ `xdebug.client_host` needs to be set to a value the container can reach the local machine at.   
+ `xdebug.client_port` needs to be accessible from the container.  
+ `xdebug.log_level` is an integer 7=debug.  
+
+ Troubleshooting: 
+ If the breakpoint isn't grabbed. There is likely a path mapping misconfiguration. Find the errors with make `tail_debug`  
